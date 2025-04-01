@@ -1,8 +1,8 @@
 from textnode import *
+from htmlnode import HTMLNode
+from leafnode import LeafNode
 
 def main():
-    dummy_text = TextNode("this is text", TextType.BOLD, "www.fuckery.com")
-
-    print(dummy_text)
+    pass
 
 main()
