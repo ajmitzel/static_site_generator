@@ -133,7 +133,7 @@ def markdown_to_html_node(markdown):
             block = block.replace(">", "\n").strip()
         elif block_type == BlockType.ORDERED_LIST:
             block_node.tag = "ol"
-            list_items = re.findall(r"[1-9]\..\w*", block)
+            list_items = re.findall(r"[1-9]\..+", block)
             new_block = ""
             for item in list_items:
                 start_idx = block.index(item)
