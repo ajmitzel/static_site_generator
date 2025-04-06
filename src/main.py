@@ -38,7 +38,7 @@ def main():
     dirs = os.listdir("docs/")
 
     for d in dirs:
-        curr_path = "public/{}".format(d)
+        curr_path = "docs/{}".format(d)
         if os.path.isfile(curr_path):
             os.remove(curr_path)
         else:
