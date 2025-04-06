@@ -185,7 +185,8 @@ def generate_page(from_path, template_path, dest_path, root):
 
     template_content = template_content.replace("{{ Title }}", title)
     template_content = template_content.replace("{{ Content }}", html_content)
-    template_content = template_content.replace("href=\"/", "href=\"{}".format(root))
+    template_content = template_content.replace("href=\"/", "this is strictly a test: {}".format(root))
+    template_content = template_content.replace("src=\"", "this is an image path: {}".format(root))
 
     dest = open(dest_path, "w")
     dest.write(template_content)
