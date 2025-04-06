@@ -169,7 +169,7 @@ def extract_title(markdown):
 
     raise Exception("No header provided")
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, root):
     print("Generating page from {} to {} using {}".format(from_path, dest_path, template_path))
 
     markdown_content = ""
@@ -185,6 +185,7 @@ def generate_page(from_path, template_path, dest_path):
 
     template_content = template_content.replace("{{ Title }}", title)
     template_content = template_content.replace("{{ Content }}", html_content)
+    template_content = template_content.replace("href=\"/", "href=\{}".format(root))
 
     dest = open(dest_path, "w")
     dest.write(template_content)
