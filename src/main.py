@@ -31,9 +31,9 @@ def index_into_directory(base_path, destination_folder, base_folder, convert_to_
 def main():
     
     if len(sys.argv) <= 1:
-        basepath = ""
+        root = ""
     else:
-        basepath = sys.argv[1]
+        root = sys.argv[1]
 
     dirs = os.listdir("docs/")
 
@@ -43,9 +43,11 @@ def main():
             os.remove(curr_path)
         else:
             shutil.rmtree(curr_path)
+
+    print(root)
     
-    tree_path = index_into_directory("static", "docs", "", True, basepath)
-    test_tree_path = index_into_directory("content", "docs", "", True, basepath)
+    tree_path = index_into_directory("static", "docs", "", True, root)
+    test_tree_path = index_into_directory("content", "docs", "", True, root)
 
 
 

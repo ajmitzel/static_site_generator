@@ -171,7 +171,6 @@ def extract_title(markdown):
 
 def generate_page(from_path, template_path, dest_path, root):
     print("Generating page from {} to {} using {}".format(from_path, dest_path, template_path))
-
     markdown_content = ""
     template_content = ""
     with open(from_path, 'r') as file:
@@ -183,10 +182,13 @@ def generate_page(from_path, template_path, dest_path, root):
     html_content = markdown_to_html_node(markdown_content)
     title = extract_title(markdown_content)
 
+    print("this is the path that this is getting built from: {}".format(from_path))
+    print("this is the path that this is getting built to: {}".format(dest_path))
+    print("this is the root destination path: {}".format(root))
     template_content = template_content.replace("{{ Title }}", title)
     template_content = template_content.replace("{{ Content }}", html_content)
-    template_content = template_content.replace("href=\"/", "this is strictly a test: {}".format(root))
-    template_content = template_content.replace("src=\"", "this is an image path: {}".format(root))
+    template_content = template_content.replace("href=\"/", "href=\"/{}".format(root))
+    template_content = template_content.replace("src=\"/", "src=\"/{}".format(root))
 
     dest = open(dest_path, "w")
     dest.write(template_content)
